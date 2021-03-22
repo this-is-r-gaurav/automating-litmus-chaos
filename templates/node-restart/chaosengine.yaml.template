@@ -1,0 +1,39 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: CHAOS_NAME_TEMPLATE
+  namespace: CHAOS_NAMESPACE_TEMPLATE
+spec:
+  # It can be true/false
+  annotationCheck: 'CHAOS_ANNOTATION_CHECK_TEMPLATE'
+  # It can be active/stop
+  engineState: 'active'
+  #ex. values: ns1:name=percona,ns2:run=nginx 
+  auxiliaryAppInfo: 'AUXILIARY_APP_INFO_TEMPLATE'
+  appinfo:
+    appns: 'APP_NAMESPACE_TEMPLATE'
+    applabel: 'APP_LABEL_TEMPLATE'
+    appkind: 'APP_KIND_TEMPLATE'
+  chaosServiceAccount: CHAOS_SERVICE_ACCOUNT_TEMPLATE
+  monitoring: false
+  # It can be delete/retain
+  jobCleanUpPolicy: 'delete'
+  experiments:
+    - name: 'EXPERIMENT_NAME_TEMPLATE'
+      spec:
+        components:
+          nodeSelector:
+            # provide the node labels
+            kubernetes.io/hostname: 'HOSTNAME_TEMPLATE' # kubectl get no <no-name> -o yaml will let you know hostname
+          env:
+             # ENTER THE TARGET NODE NAME
+            - name: TARGET_NODE
+              value: 'TARGET_NODE_NAME_TEMPLATE' # kubectl get no will let you name
+
+            # ENTER THE TARGET NODE IP
+            - name: TARGET_NODE_IP
+              value: 'TARGET_NODE_INTERNAL_IP_TEMPLATE' # Replace this with your vm internal IP
+
+             # ENTER THE USER TO BE USED FOR SSH AUTH
+            - name: SSH_USER
+              value: 'SSH_USER_TEMPLATE' # replace this with your users
