@@ -1,0 +1,21 @@
+app_name: "test"
+app_kind: "deployment"
+app_namespace: "default"
+app_label: ""
+chaos_pipeline: ["node-restart"]
+chaos_config:
+  - name: 'node-restart'
+    service_account: 'node-restart-sa'
+    annotation_check: "false"
+    auxiliary_app_info: ''
+    experiments:
+      - name: 'node-restart'
+        hostname: ''
+        target_node_name: ''
+        target_node_ip: ''
+        ssh_user: ''
+      - name: 'node-restart'
+        hostname: ''
+        target_node_name: ''
+        target_node_ip: ''
+        ssh_user: ''

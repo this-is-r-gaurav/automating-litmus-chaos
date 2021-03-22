@@ -1,3 +1,4 @@
 *.yaml
 Litmus.md
 **/.idea
+!init.yaml
